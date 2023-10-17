@@ -61,6 +61,38 @@ public class SafeInput
 
 
     // BROKEN SALARY GOES HERE
+    /**
+     * Returns an unconstrained double value
+     * @param pipe scanner
+     * @param prompt
+     * @return
+     */
+    public static double getDouble(Scanner pipe, String prompt)
+    {
+        boolean done = false;
+        String trash = "";
+        double value = 0;
+        do
+        {
+            System.out.print(prompt + ": ");
+            if(pipe.hasNextDouble())
+            {
+                value = pipe.nextDouble();
+                pipe.nextLine(); // clear the buffer
+                done = true;
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("\nYou must enter a number. You entered: " + trash);
+            }
+
+        }while(!done);
+
+        return value;
+    }
+
+
 
     /**
      * gets int val from the user with a high and low constraint
@@ -70,17 +102,50 @@ public class SafeInput
      * @param high Top value for inclusive range
      * @return The value
      */
-    public static int getRangedInt(Scanner pipe, String prompt, int low, int high)
-    {
+    public static int getRangedInt(Scanner pipe, String prompt, int low, int high) {
         boolean done = false;
         String trash = "";
         int value = 0;
+        do {
+            System.out.print(prompt + " [" + low + " - " + high + "]: ");
+            if (pipe.hasNextInt()) {
+                value = pipe.nextInt();
+                pipe.nextLine(); // clear the buffer
+
+                if (value >= low && value <= high)
+                    done = true;
+                else
+                    System.out.println("\nYou must enter a value within the range [" + low + " - " + high + "]: ");
+            } else {
+                trash = pipe.nextLine();
+                System.out.println("\nYou must enter a number. You entered: " + trash);
+            }
+
+        } while (!done);
+
+        return value;
+    }
+
+
+    /**
+     * Gets a double value within an inclusive range
+     * @param pipe The scanner to use for input
+     * @param prompt The message to user what to enter
+     * @param low Low bound of inclusive range
+     * @param high High bound of inclusive range
+     * @return Returns a double within the inclusive range
+     */
+    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high)
+    {
+        boolean done = false;
+        String trash = "";
+        double value = 0;
         do
         {
             System.out.print(prompt + " [" + low + " - " + high + "]: ");
-            if(pipe.hasNextInt())
+            if(pipe.hasNextDouble())
             {
-                value = pipe.nextInt();
+                value = pipe.nextDouble();
                 pipe.nextLine(); // clear the buffer
 
                 if(value >=low && value <= high)
@@ -97,6 +162,7 @@ public class SafeInput
         }while(!done);
 
         return value;
+    }
 
 
 }

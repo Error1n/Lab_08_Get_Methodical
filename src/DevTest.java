@@ -24,11 +24,10 @@ public class DevTest
 
         favNum = getRangedInt(testScan, "Enter your favorite number", 1, 10);
         System.out.println("You said your fav num is: " + favNum);
+
+        salary = getRangedDouble(testScan, "Enter your salary", 300, 100000);
+        System.out.println("You said your salary is: " + salary);
          */
-
-
-
-
 
 
     }
@@ -91,7 +90,7 @@ public class DevTest
     }
 
     /**
-     * Returns an unconstrained double value
+     * Returns an unconstrained double value (has a wrong output for invalid code)
      * @param pipe scanner
      * @param prompt
      * @return
@@ -140,6 +139,44 @@ public class DevTest
             if(pipe.hasNextInt())
             {
                 value = pipe.nextInt();
+                pipe.nextLine(); // clear the buffer
+
+                if(value >=low && value <= high)
+                    done = true;
+                else
+                    System.out.println("\nYou must enter a value within the range [" + low + " - " + high + "]: ");
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("\nYou must enter a number. You entered: " + trash);
+            }
+
+        }while(!done);
+
+        return value;
+    }
+
+
+    /**
+     * Gets a double value within an inclusive range
+     * @param pipe The scanner to use for input
+     * @param prompt The message to user what to enter
+     * @param low Low bound of inclusive range
+     * @param high High bound of inclusive range
+     * @return Returns a double within the inclusive range
+     */
+    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high)
+    {
+        boolean done = false;
+        String trash = "";
+        double value = 0;
+        do
+        {
+            System.out.print(prompt + " [" + low + " - " + high + "]: ");
+            if(pipe.hasNextDouble())
+            {
+                value = pipe.nextDouble();
                 pipe.nextLine(); // clear the buffer
 
                 if(value >=low && value <= high)
