@@ -164,5 +164,63 @@ public class SafeInput
         return value;
     }
 
+    /**
+     * Takes a regEx string and returns a valid match from the user
+     * @param pipe Scanner to use for input
+     * @param prompt Message to user telling them what is needed for input
+     * @param regEx A string that represents a regular expression to use for the test
+     * @return a string value that matches the regular expression
+     */
+    public static String getRegExString(Scanner pipe, String prompt, String regEx)
+    {
+        boolean done = false;
+        String response = "";
+        do
+        {
+            System.out.print(prompt + " " + regEx + ": ");
+            response = pipe.nextLine();
+
+            if(response.matches(regEx))
+                done = true;
+            else
+                System.out.println("\nYou must enter a string that matches the pattern " + regEx + "!\n");
+
+        }while(!done);
+
+        return response;
+    }
+
+    /**
+     * returns a true false value for yes or no input [y/n]
+     * @param pipe scanner to read the input
+     * @param prompt message to tell user what to input
+     * @return returns a boolean true or false for yes or no
+     */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        boolean done = false;
+        boolean retVal = false;
+        String response = "";
+        do
+        {
+            System.out.print(prompt + "[YyNn]: ");
+            response = pipe.nextLine();
+
+            if(response.toUpperCase().matches("[YN]"))
+            {
+                done = true;
+                if (response.equalsIgnoreCase("Y"))
+                    retVal = true;
+                else // N
+                    retVal = false;
+            }
+            else
+                System.out.println("\nYou must enter a [y/n]! \n");
+
+        }while(!done);
+
+        return retVal;
+    }
+
 
 }

@@ -7,31 +7,45 @@ public class DevTest
     public static void main(String[] args)
     {
         String firstName = "";
+        String ssn = "";
         int age = 0;
         double salary = 0;
         int favNum = 0;
 
         /*
 
+        // test here for getNonZeroLenString
         firstName = SafeInput.getNonZeroLenString(testScan, "Enter your first name");
         System.out.println("Firstname is " + firstName);
 
+        // test here for getInt
         age = getInt(testScan, "Enter your age");
         System.out.println("You said your age is: " + age);
 
+        // test here for getDouble
         salary = getDouble(testScan, "Enter your salary: ");
         System.out.println("You said salary is: " + salary);
 
+        // test here for getRangedInt
         favNum = getRangedInt(testScan, "Enter your favorite number", 1, 10);
         System.out.println("You said your fav num is: " + favNum);
 
+        // test here for getRangedDouble
         salary = getRangedDouble(testScan, "Enter your salary", 300, 100000);
         System.out.println("You said your salary is: " + salary);
+
+        // test here for getRegExString
+        String ssnRegEx = "^\\d{3}-\\d{2}-\\d{4}$"; // the carrot ^ and dollar $ anchors the pattern
+        ssn = getRegExString(testScan, "Enter your SSN", ssnRegEx); //testing for a social security number
+        System.out.println("You said snn is " + ssn);
+
          */
 
-        // put the test here for getYNConfirm
 
-        // put the test here for getRegExString
+        // test here for getYNConfirm
+
+
+
 
 
     }
@@ -231,12 +245,31 @@ public class DevTest
         return retVal;
     }
 
+    /**
+     * Takes a regEx string and returns a valid match from the user
+     * @param pipe Scanner to use for input
+     * @param prompt Message to user telling them what is needed for input
+     * @param regEx A string that represents a regular expression to use for the test
+     * @return a string value that matches the regular expression
+     */
     public static String getRegExString(Scanner pipe, String prompt, String regEx)
     {
+        boolean done = false;
+        String response = "";
+        do
+        {
+            System.out.print(prompt + " " + regEx + ": ");
+            response = pipe.nextLine();
 
+            if(response.matches(regEx))
+                done = true;
+            else
+                System.out.println("\nYou must enter a string that matches the pattern " + regEx + "!\n");
+
+        }while(!done);
+
+        return response;
     }
-
-
 
 
 }
