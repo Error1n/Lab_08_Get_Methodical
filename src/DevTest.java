@@ -29,6 +29,10 @@ public class DevTest
         System.out.println("You said your salary is: " + salary);
          */
 
+        // put the test here for getYNConfirm
+
+        // put the test here for getRegExString
+
 
     }
     // methods go after the main!
@@ -193,6 +197,43 @@ public class DevTest
         }while(!done);
 
         return value;
+    }
+
+    /**
+     * returns a true false value for yes or no input [y/n]
+     * @param pipe scanner to read the input
+     * @param prompt message to tell user what to input
+     * @return returns a boolean true or false for yes or no
+     */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        boolean done = false;
+        boolean retVal = false;
+        String response = "";
+        do
+        {
+            System.out.print(prompt + "[YyNn]: ");
+            response = pipe.nextLine();
+
+            if(response.toUpperCase().matches("[YN]"))
+            {
+                done = true;
+                if (response.equalsIgnoreCase("Y"))
+                    retVal = true;
+                else // N
+                    retVal = false;
+            }
+            else
+                System.out.println("\nYou must enter a [y/n]! \n");
+
+        }while(!done);
+
+        return retVal;
+    }
+
+    public static String getRegExString(Scanner pipe, String prompt, String regEx)
+    {
+
     }
 
 
