@@ -11,4 +11,9 @@ public class GetUserName
         System.out.println("\nYour full name is: " + firstName + " " + lastName);
 
     }
+
+    // if (n % 2) == 1 then it's odd)
+        //sout ODD
+     //else
+        //sout EVEN
 }

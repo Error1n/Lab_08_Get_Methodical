@@ -8,6 +8,7 @@ public class DevTest
     {
         String firstName = "";
         String ssn = "";
+        String response = "";
         int age = 0;
         double salary = 0;
         int favNum = 0;
@@ -34,16 +35,19 @@ public class DevTest
         salary = getRangedDouble(testScan, "Enter your salary", 300, 100000);
         System.out.println("You said your salary is: " + salary);
 
+        // test here for getYNConfirm
+        getYNConfirm(testScan, "Do you want to play again?");
+        if (response.equalsIgnoreCase("Y"))
+            System.out.println("You chose to play again!");
+        else
+            System.out.println("You chose not to play again!");
+
         // test here for getRegExString
         String ssnRegEx = "^\\d{3}-\\d{2}-\\d{4}$"; // the carrot ^ and dollar $ anchors the pattern
         ssn = getRegExString(testScan, "Enter your SSN", ssnRegEx); //testing for a social security number
         System.out.println("You said snn is " + ssn);
 
          */
-
-
-        // test here for getYNConfirm
-
 
 
 
