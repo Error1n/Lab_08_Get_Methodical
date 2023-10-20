@@ -7,6 +7,8 @@ public class BirthDateTime
         int year = 0;
         int day = 0;
         int month = 0;
+        int hour = 0;
+        int mins = 0;
         boolean done = false;
 
 
@@ -68,7 +70,12 @@ public class BirthDateTime
                     break;
             }
 
-        System.out.println("You were born on " + month + " / " + day + " / " + year);
+        hour = SafeInput.getRangedInt(testScan, "Enter the hour you were born", 1, 12);
+        System.out.println("You said your hour of birth was: " + hour);
+        mins = SafeInput.getRangedInt(testScan, "Enter the minute you were born", 1, 60);
+        System.out.println("You said your minute of birth was: " + mins);
+
+        System.out.println("You were born on " + month + " / " + day + " / " + year + " at " + hour + ":" + mins);
 
 
 
