@@ -49,6 +49,8 @@ public class DevTest
 
          */
 
+        SafeInput.PrettyHeader(testScan, "Enter your message");
+
     }
     // methods go after the main!
 

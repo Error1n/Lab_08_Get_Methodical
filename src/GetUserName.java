@@ -12,8 +12,5 @@ public class GetUserName
 
     }
 
-    // if (n % 2) == 1 then it's odd)
-        //sout ODD
-     //else
-        //sout EVEN
+
 }
