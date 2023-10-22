@@ -22,14 +22,7 @@ public class Reggie
 
         //get a menu choice using this pattern ^[OoSsVvQq]$
         menuOptions = SafeInput.getRegExString(testScan, "Choose from the menu options", "^[OoSsVvQq]$");
-        if(menuOptions.matches("Oo"))
-            System.out.println("You selected open!");
-        else if(menuOptions.matches("Ss"))
-            System.out.println("You selected Save!");
-        else if(menuOptions.matches("Vv"))
-            System.out.println("You selected View!");
-        else if(menuOptions.matches("Qq"))
-            System.out.println("You selected Quit!");
+        System.out.println("You chose: " + menuOptions);
 
 
     }
