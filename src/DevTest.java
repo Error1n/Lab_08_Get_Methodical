@@ -49,11 +49,6 @@ public class DevTest
 
          */
 
-
-
-
-
-
     }
     // methods go after the main!
 
@@ -232,7 +227,7 @@ public class DevTest
         String response = "";
         do
         {
-            System.out.print(prompt + "[YyNn]: ");
+            System.out.print(prompt + "[YN]: ");
             response = pipe.nextLine();
 
             if(response.toUpperCase().matches("[YN]"))
